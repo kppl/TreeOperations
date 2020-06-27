@@ -57,9 +57,9 @@ int UniversalValueTree(Node* startNode, int initValue) {
 	return result;
 }
 
-void PlotTree(Node* nodeToPlot, int level, list<string> img) {
+void PlotTree(Node* nodeToPlot, int level, int treeDepth) {
 	if (nodeToPlot != NULL) {
-		
+		int imgWidth = treeDepth^2;
 	}
 		
 }
