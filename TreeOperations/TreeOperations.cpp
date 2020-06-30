@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <list>
+#include<string>
 #include "Node.h"
 
 using namespace std;
@@ -57,9 +58,34 @@ int UniversalValueTree(Node* startNode, int initValue) {
 	return result;
 }
 
-void PlotTree(Node* nodeToPlot, int level, int treeDepth) {
+void SerializeBinaryTree(Node* nodeToPlot, int level, string& serializedTree) {
+
+	serializedTree += to_string(nodeToPlot->value);
+
+	if (nodeToPlot->left) {
+		for(int i=0; i<=level; i++)
+			serializedTree += "l";
+		SerializeBinaryTree(nodeToPlot->left, level++, serializedTree);
+	}
+	
+	if (nodeToPlot->right) {
+		for (int i = 0; i <= level; i++)
+			serializedTree += "r";
+		SerializeBinaryTree(nodeToPlot->right, level++, serializedTree);
+	}
+
+	cout << serializedTree << "\r\n";
+}
+
+void PlotTree(Node* nodeToPlot, int level, int treeDepth, list<string> img) {
+	// Plan:
+	// Tree serialization with an information, which node comes from which parent, which level
+	// Reading from the string instructions how to plot the tree
 	if (nodeToPlot != NULL) {
 		int imgWidth = treeDepth^2;
+		for (int i = 0; i < imgWidth / 2; i++) {
+
+		}
 	}
 		
 }
@@ -77,6 +103,9 @@ int main()
 	Node B = Node(3, &C, &D);
 	Node root = Node(1, &A, &B);
 
+	string serializedTree;
+	SerializeBinaryTree(&root, 0, serializedTree);
+	std::cout << "Tree serialization: " << serializedTree << "\n";
 	std::cout << "Nodes' sum: " << CountNodeValues(&root, 0) << "\n";
 	std::cout << "Universal Value Trees: " << UniversalValueTree(&root, 0) << "\n";
 

@@ -1,2 +1,0 @@
-C:\Users\Krzysiek\source\repos\TreeOperations\x64\Debug\TreeOperations.exe.lastcodeanalysissucceeded
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\x64\Debug\NativeCodeAnalysis.read.1.tlog

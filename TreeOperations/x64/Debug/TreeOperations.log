@@ -1,6 +1,2 @@
-﻿  Node.cpp
-  TreeOperations.cpp
-  Compiling...
-  Generating Code...
+﻿  TreeOperations.cpp
   TreeOperations.vcxproj -> C:\Users\Krzysiek\source\repos\TreeOperations\x64\Debug\TreeOperations.exe
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\Node.h(10): warning C26495: Variable 'Node::right' is uninitialized. Always initialize a member variable (type.6).
