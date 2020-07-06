@@ -61,17 +61,28 @@ int UniversalValueTree(Node* startNode, int initValue) {
 void SerializeBinaryTree(Node* nodeToPlot, int level, string& serializedTree) {
 
 	serializedTree += to_string(nodeToPlot->value);
+	level++;
 
 	if (nodeToPlot->left) {
 		for(int i=0; i<=level; i++)
 			serializedTree += "l";
-		SerializeBinaryTree(nodeToPlot->left, level++, serializedTree);
+		SerializeBinaryTree(nodeToPlot->left, level, serializedTree);
+	}
+	else {
+		for (int i = 0; i <= level; i++)
+			serializedTree += "l";
+		serializedTree += "_";
 	}
 	
 	if (nodeToPlot->right) {
 		for (int i = 0; i <= level; i++)
 			serializedTree += "r";
-		SerializeBinaryTree(nodeToPlot->right, level++, serializedTree);
+		SerializeBinaryTree(nodeToPlot->right, level, serializedTree);
+	}
+	else {
+		for (int i = 0; i <= level; i++)
+			serializedTree += "r";
+		serializedTree += "_";
 	}
 
 	cout << serializedTree << "\r\n";
