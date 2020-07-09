@@ -64,13 +64,13 @@ void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, s
 	posVertical++;
 
 	if (nodeToPlot->left) {
-		posHorizontal--;
-		SerializeBinaryTree(nodeToPlot->left, posHorizontal, posVertical, serializedTree);
+		//posHorizontal-=2;
+		SerializeBinaryTree(nodeToPlot->left, posHorizontal -= 2, posVertical, serializedTree);
 	}
 	
 	if (nodeToPlot->right) {
-		posHorizontal++;
-		SerializeBinaryTree(nodeToPlot->right, posHorizontal, posVertical, serializedTree);
+		//posHorizontal+=2;
+		SerializeBinaryTree(nodeToPlot->right, posHorizontal += 2, posVertical, serializedTree);
 	}
 
 	cout << serializedTree << "\r\n";
