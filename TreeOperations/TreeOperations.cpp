@@ -5,9 +5,33 @@
 #include <list>
 #include<string>
 #include "Node.h"
+#include <vector>
+#include <sstream>
+#include<iterator>
+#include <algorithm>
 
 using namespace std;
 
+// This function was written using an example on this page: http://www.cplusplus.com/articles/2wA0RXSz/
+// It works starting from C++11
+vector<string> SplitStringToVector(const string& inputString, const char& delimiter)
+{
+	string stringBuffer{ "" };
+	vector<string> result;
+
+	for (auto n : inputString)
+	{
+		if (n != delimiter) stringBuffer += n; else
+			if (n == delimiter && stringBuffer != "") { result.push_back(stringBuffer); stringBuffer = ""; }
+	}
+	if (stringBuffer != "") result.push_back(stringBuffer);
+
+	return result;
+}
+
+void SimplePrintTree(string serializedTree) {
+
+}
 
 int CountNodeValues(Node* startNode, int initValue)
 {
@@ -74,11 +98,12 @@ void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, s
 	}
 
 	cout << serializedTree << "\r\n";
+	vector<string> splittedString = SplitStringToVector(serializedTree, ';');
+	SimplePrintTree(serializedTree);
 }
 
-void SimplePrintTree(string serializedTree) {
 
-}
+
 
 void PlotTree(Node* nodeToPlot, int level, int treeDepth, list<string> img) {
 	// Plan:
