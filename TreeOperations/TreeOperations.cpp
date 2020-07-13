@@ -29,8 +29,15 @@ vector<string> SplitStringToVector(const string& inputString, const char& delimi
 	return result;
 }
 
-void SimplePrintTree(string serializedTree) {
-
+void SimplePrintTree(vector<string> serializedTree) {
+	cout << "SimplePrintTree:" << "\r\n";
+	int* arr = (int*)malloc(serializedTree.size() * 3 * sizeof(int));;
+	for (auto treeNode : serializedTree) {
+		vector<string> splittedElement = SplitStringToVector(treeNode, ',');
+		cout << splittedElement[2] << "\r\n";
+		string a[i][i];
+	}
+	free(arr);
 }
 
 int CountNodeValues(Node* startNode, int initValue)
@@ -99,7 +106,7 @@ void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, s
 
 	cout << serializedTree << "\r\n";
 	vector<string> splittedString = SplitStringToVector(serializedTree, ';');
-	SimplePrintTree(serializedTree);
+	SimplePrintTree(splittedString);
 }
 
 
