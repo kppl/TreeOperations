@@ -1,9 +1,2 @@
 ﻿  TreeOperations.cpp
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(34,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(34,37): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(38,12): error C2131: expression did not evaluate to a constant
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(34,35): message : failure was caused by call of undefined function or one not declared 'constexpr'
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(34,35): message : see usage of 'std::vector<std::string,std::allocator<std::string>>::size'
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(38,15): error C2131: expression did not evaluate to a constant
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(34,35): message : failure was caused by call of undefined function or one not declared 'constexpr'
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(34,35): message : see usage of 'std::vector<std::string,std::allocator<std::string>>::size'
+  TreeOperations.vcxproj -> C:\Users\Krzysiek\source\repos\TreeOperations\x64\Debug\TreeOperations.exe
