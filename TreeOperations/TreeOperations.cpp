@@ -9,6 +9,7 @@
 #include <sstream>
 #include<iterator>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ void SimplePrintTree(vector<string> serializedTree, int treeDepth) {
 	
 	// Put the input vector to a 2 dimensional array
 	cout << "SimplePrintTree:" << "\r\n\r\n";
-	int printSpan = 2 ^ treeDepth;
+	int printSpan = pow(2, treeDepth);
 	int** a = new int * [serializedTree.size()];
 	for (int i = 0; i < serializedTree.size(); i++) {
 		a[i] = new int[printSpan];
