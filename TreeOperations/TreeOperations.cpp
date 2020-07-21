@@ -30,39 +30,89 @@ vector<string> SplitStringToVector(const string& inputString, const char& delimi
 	return result;
 }
 
+/****                    SAMPLE IMAGE OUTPUT                       ****/
+//								  1
+//                              2   3
+//                                4   7
+//                                      7
+//                                    7   7
 void SimplePrintTree(vector<string> serializedTree, int treeDepth) {
 	
 	// Put the input vector to a 2 dimensional array
 	cout << "SimplePrintTree:" << "\r\n\r\n";
 	int printSpan = pow(2, treeDepth);
-	int** a = new int * [serializedTree.size()];
+	int** consolePicture = new int * [serializedTree.size()];
+	int offset = printSpan / 2;
 	for (int i = 0; i < serializedTree.size(); i++) {
-		a[i] = new int[printSpan];
+		consolePicture[i] = new int[printSpan];
 		// Fill a row with NULL values
 		for (int j = 0; j < printSpan; j++)
-			a[i][j] = NULL;
+			consolePicture[i][j] = NULL;
 		vector<string> splittedElement = SplitStringToVector(serializedTree[i], ',');
 		int rows;
-		istringstream(splittedElement[1]) >> rows;
+		istringstream(splittedElement[2]) >> rows;
 		int cols;
-		istringstream(splittedElement[0]) >> cols;
+		istringstream(splittedElement[1]) >> cols;
 		int value;
-		istringstream(splittedElement[2]) >> value;
-		a[rows][(printSpan / 2) + cols] = value;
+		istringstream(splittedElement[3]) >> value;
+		consolePicture[rows][(printSpan / 2) + cols] = value;
 	}
 
 	// Print the array
 	for (int i = 0; i < serializedTree.size(); i++) {
 		for (int j = 0; j < printSpan; j++) {
-			if(a[i][j] != NULL)
-				cout << a[i][j] << " ";
+			if(consolePicture[i][j] != NULL)
+				cout << consolePicture[i][j] << " ";
 			else
 				cout << "  ";
 		}
 		cout << "\r\n";
 	}
-	cout << "==============================" << "\r\n";
-	delete[] a;
+
+	delete[] consolePicture;
+
+}
+
+void PrintTree(vector<string> serializedTree, int treeDepth) {
+
+	// Put the input vector to a 2 dimensional array
+	cout << "PrintTree:" << "\r\n\r\n";
+	int printSpan = pow(2, treeDepth);
+	string** consolePicture = new string* [treeDepth*2];
+	for (int i = 0; i < treeDepth * 2; i++) {
+		consolePicture[i] = new string[printSpan];
+		for (int j = 0; j < printSpan; j++)
+			consolePicture[i][j] = " ";
+	}
+		
+	for (int i = 0; i < serializedTree.size(); i++) {
+		
+		// Fill a row with NULL values
+		//for (int j = 0; j < printSpan; j++)
+		//	consolePicture[i][j] = " ";
+		vector<string> splittedElement = SplitStringToVector(serializedTree[i], ',');
+		int rows;
+		istringstream(splittedElement[2]) >> rows;
+		int cols;
+		istringstream(splittedElement[1]) >> cols;
+
+		consolePicture[rows*2][(printSpan / 2) + cols] = splittedElement[3];
+		if (rows > 0)
+			if(splittedElement[0] == "r")
+				consolePicture[rows * 2-1][(printSpan / 2) + cols] = "\\";
+			else
+				consolePicture[rows * 2-1][(printSpan / 2) + cols] = "/";
+	}
+
+	// Print the array
+	for (int i = 0; i < treeDepth * 2; i++) {
+		for (int j = 0; j < printSpan; j++) {
+			cout << consolePicture[i][j];
+		}
+		cout << "\r\n";
+	}
+
+	//delete[] consolePicture;
 
 }
 
@@ -124,16 +174,14 @@ void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, s
 	posVertical++;
 
 	if (nodeToPlot->left) {
-		//posHorizontal-=2;
+		serializedTree += "l,";
 		SerializeBinaryTree(nodeToPlot->left, posHorizontal - 1, posVertical, serializedTree);
 	}
 
 	if (nodeToPlot->right) {
-		//posHorizontal+=2;
+		serializedTree += "r,";
 		SerializeBinaryTree(nodeToPlot->right, posHorizontal + 1, posVertical, serializedTree);
 	}
-
-	cout << serializedTree << "\r\n";
 }
 
 
@@ -165,10 +213,11 @@ int main()
 	Node B = Node(3, &C, &D);
 	Node root = Node(1, &A, &B);
 
-	string serializedTree;
+	string serializedTree = "l,";
 	SerializeBinaryTree(&root, 0, 0, serializedTree);
 	vector<string> splittedString = SplitStringToVector(serializedTree, ';');
 	SimplePrintTree(splittedString, 5);
+	PrintTree(splittedString, 5);
 
 	std::cout << "Tree serialization: " << serializedTree << "\n";
 	std::cout << "Nodes' sum: " << CountNodeValues(&root, 0) << "\n";
