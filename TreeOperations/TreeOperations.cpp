@@ -1,10 +1,8 @@
-// TreeOperations.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <list>
 #include<string>
 #include "Node.h"
+#include "Visualization.h"
 #include <vector>
 #include <sstream>
 #include<iterator>
@@ -13,108 +11,7 @@
 
 using namespace std;
 
-// This function was written using an example on this page: http://www.cplusplus.com/articles/2wA0RXSz/
-// It works starting from C++11
-vector<string> SplitStringToVector(const string& inputString, const char& delimiter)
-{
-	string stringBuffer{ "" };
-	vector<string> result;
 
-	for (auto n : inputString)
-	{
-		if (n != delimiter) stringBuffer += n; else
-			if (n == delimiter && stringBuffer != "") { result.push_back(stringBuffer); stringBuffer = ""; }
-	}
-	if (stringBuffer != "") result.push_back(stringBuffer);
-
-	return result;
-}
-
-/****                    SAMPLE IMAGE OUTPUT                       ****/
-//								  1
-//                              2   3
-//                                4   7
-//                                      7
-//                                    7   7
-void SimplePrintTree(vector<string> serializedTree, int treeDepth) {
-	
-	// Put the input vector to a 2 dimensional array
-	cout << "SimplePrintTree:" << "\r\n\r\n";
-	int printSpan = pow(2, treeDepth);
-	int** consolePicture = new int * [serializedTree.size()];
-	int offset = printSpan / 2;
-	for (int i = 0; i < serializedTree.size(); i++) {
-		consolePicture[i] = new int[printSpan];
-		// Fill a row with NULL values
-		for (int j = 0; j < printSpan; j++)
-			consolePicture[i][j] = NULL;
-		vector<string> splittedElement = SplitStringToVector(serializedTree[i], ',');
-		int rows;
-		istringstream(splittedElement[2]) >> rows;
-		int cols;
-		istringstream(splittedElement[1]) >> cols;
-		int value;
-		istringstream(splittedElement[3]) >> value;
-		consolePicture[rows][(printSpan / 2) + cols] = value;
-	}
-
-	// Print the array
-	for (int i = 0; i < serializedTree.size(); i++) {
-		for (int j = 0; j < printSpan; j++) {
-			if(consolePicture[i][j] != NULL)
-				cout << consolePicture[i][j] << " ";
-			else
-				cout << "  ";
-		}
-		cout << "\r\n";
-	}
-
-	delete[] consolePicture;
-
-}
-
-void PrintTree(vector<string> serializedTree, int treeDepth) {
-
-	// Put the input vector to a 2 dimensional array
-	cout << "PrintTree:" << "\r\n\r\n";
-	int printSpan = pow(2, treeDepth);
-	string** consolePicture = new string* [treeDepth*2];
-	for (int i = 0; i < treeDepth * 2; i++) {
-		consolePicture[i] = new string[printSpan];
-		for (int j = 0; j < printSpan; j++)
-			consolePicture[i][j] = " ";
-	}
-		
-	for (int i = 0; i < serializedTree.size(); i++) {
-		
-		// Fill a row with NULL values
-		//for (int j = 0; j < printSpan; j++)
-		//	consolePicture[i][j] = " ";
-		vector<string> splittedElement = SplitStringToVector(serializedTree[i], ',');
-		int rows;
-		istringstream(splittedElement[2]) >> rows;
-		int cols;
-		istringstream(splittedElement[1]) >> cols;
-
-		consolePicture[rows*2][(printSpan / 2) + cols] = splittedElement[3];
-		if (rows > 0)
-			if(splittedElement[0] == "r")
-				consolePicture[rows * 2-1][(printSpan / 2) + cols] = "\\";
-			else
-				consolePicture[rows * 2-1][(printSpan / 2) + cols] = "/";
-	}
-
-	// Print the array
-	for (int i = 0; i < treeDepth * 2; i++) {
-		for (int j = 0; j < printSpan; j++) {
-			cout << consolePicture[i][j];
-		}
-		cout << "\r\n";
-	}
-
-	//delete[] consolePicture;
-
-}
 
 int CountNodeValues(Node* startNode, int initValue)
 {
@@ -168,37 +65,6 @@ int UniversalValueTree(Node* startNode, int initValue) {
 	return result;
 }
 
-void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, string& serializedTree) {
-
-	serializedTree += to_string(posHorizontal) + "," + to_string(posVertical) + "," + to_string(nodeToPlot->value) + ";";
-	posVertical++;
-
-	if (nodeToPlot->left) {
-		serializedTree += "l,";
-		SerializeBinaryTree(nodeToPlot->left, posHorizontal - 1, posVertical, serializedTree);
-	}
-
-	if (nodeToPlot->right) {
-		serializedTree += "r,";
-		SerializeBinaryTree(nodeToPlot->right, posHorizontal + 1, posVertical, serializedTree);
-	}
-}
-
-
-
-
-void PlotTree(Node* nodeToPlot, int level, int treeDepth, list<string> img) {
-	// Plan:
-	// Tree serialization with an information, which node comes from which parent, which level
-	// Reading from the string instructions how to plot the tree
-	if (nodeToPlot != NULL) {
-		int imgWidth = treeDepth ^ 2;
-		for (int i = 0; i < imgWidth / 2; i++) {
-
-		}
-	}
-
-}
 
 int main()
 {

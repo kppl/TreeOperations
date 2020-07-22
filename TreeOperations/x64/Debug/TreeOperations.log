@@ -1,4 +1,3 @@
 ﻿  TreeOperations.cpp
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(43,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\TreeOperations.cpp(80,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\Visualization.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   TreeOperations.vcxproj -> C:\Users\Krzysiek\source\repos\TreeOperations\x64\Debug\TreeOperations.exe
