@@ -148,11 +148,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Operations.cpp" />
     <ClCompile Include="TreeOperations.cpp" />
     <ClCompile Include="Visualization.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Operations.h" />
     <ClInclude Include="Visualization.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

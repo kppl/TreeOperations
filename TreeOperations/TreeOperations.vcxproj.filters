@@ -24,12 +24,18 @@
     <ClCompile Include="Visualization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Operations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Visualization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Operations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
