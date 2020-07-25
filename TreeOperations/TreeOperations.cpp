@@ -21,13 +21,9 @@ int main()
 	Node B = Node(3, &C, &D);
 	Node root = Node(1, &A, &B);
 
-	string serializedTree = "l,";
-	SerializeBinaryTree(&root, 0, 0, serializedTree);
-	vector<string> splittedString = SplitStringToVector(serializedTree, ';');
-	SimplePrintTree(splittedString, 5);
-	PrintTree(splittedString, 5);
+	
 
-	std::cout << "Tree serialization: " << serializedTree << "\n";
+	PrintTreeFactory(root, 5);
 	std::cout << "Nodes' sum: " << CountNodeValues(&root, 0) << "\n";
 	std::cout << "Universal Value Trees: " << UniversalValueTree(&root, 0) << "\n";
 

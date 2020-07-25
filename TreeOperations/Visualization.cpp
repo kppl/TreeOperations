@@ -46,7 +46,6 @@ vector<string> SplitStringToVector(const string& inputString, const char& delimi
 	return result;
 }
 
-
 /****                    SAMPLE IMAGE OUTPUT                       ****/
 //								  1
 //                              2   3
@@ -126,6 +125,20 @@ void PrintTree(vector<string> serializedTree, int treeDepth) {
 	}
 
 	//delete[] consolePicture;
+
+}
+
+void PrintTreeFactory(Node& root, int treeDepth, int mode = 0) {
+	string serializedTree = "l,";
+	SerializeBinaryTree(&root, 0, 0, serializedTree);
+	vector<string> splittedString = SplitStringToVector(serializedTree, ';');
+	switch (mode) {
+	case 0:
+		PrintTree(splittedString, treeDepth);
+		break;
+	case 1:
+		SimplePrintTree(splittedString, treeDepth);
+	}
 
 }
 
