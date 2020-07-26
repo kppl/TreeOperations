@@ -1,8 +1,25 @@
 #include <iostream>
+#include <sstream>
 #include "Node.h"
 
 using namespace std;
 
+// This function goes over each binary tree node and extract all information to a string.
+void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, string& serializedTree) {
+
+	serializedTree += to_string(posHorizontal) + "," + to_string(posVertical) + "," + to_string(nodeToPlot->value) + ";";
+	posVertical++;
+
+	if (nodeToPlot->left) {
+		serializedTree += "l,";
+		SerializeBinaryTree(nodeToPlot->left, posHorizontal - 1, posVertical, serializedTree);
+	}
+
+	if (nodeToPlot->right) {
+		serializedTree += "r,";
+		SerializeBinaryTree(nodeToPlot->right, posHorizontal + 1, posVertical, serializedTree);
+	}
+}
 
 int CountNodeValues(Node* startNode, int initValue)
 {
@@ -56,3 +73,6 @@ int UniversalValueTree(Node* startNode, int initValue) {
 	return result;
 }
 
+Node* SortBinaryTree(Node* root) {
+	return NULL;
+}

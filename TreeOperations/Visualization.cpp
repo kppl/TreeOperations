@@ -2,6 +2,7 @@
 #include <list>
 #include<string>
 #include "Node.h"
+#include "Operations.h"
 #include <vector>
 #include <sstream>
 #include<iterator>
@@ -12,22 +13,6 @@ using namespace std;
 
 
 
-// This function goes over each binary tree node and extract all information to a string.
-void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, string& serializedTree) {
-
-	serializedTree += to_string(posHorizontal) + "," + to_string(posVertical) + "," + to_string(nodeToPlot->value) + ";";
-	posVertical++;
-
-	if (nodeToPlot->left) {
-		serializedTree += "l,";
-		SerializeBinaryTree(nodeToPlot->left, posHorizontal - 1, posVertical, serializedTree);
-	}
-
-	if (nodeToPlot->right) {
-		serializedTree += "r,";
-		SerializeBinaryTree(nodeToPlot->right, posHorizontal + 1, posVertical, serializedTree);
-	}
-}
 
 // The function SplitStringToVector was written using an example on the following page: http://www.cplusplus.com/articles/2wA0RXSz/
 // It works starting from C++11
