@@ -1,4 +1,2 @@
-﻿  Visualization.cpp
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\Visualization.cpp(44,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Krzysiek\source\repos\TreeOperations\TreeOperations\Visualization.cpp(81,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+﻿  Operations.cpp
   TreeOperations.vcxproj -> C:\Users\Krzysiek\source\repos\TreeOperations\x64\Debug\TreeOperations.exe

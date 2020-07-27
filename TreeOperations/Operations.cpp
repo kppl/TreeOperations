@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include "Node.h"
 
 using namespace std;
@@ -73,6 +74,27 @@ int UniversalValueTree(Node* startNode, int initValue) {
 	return result;
 }
 
+// Tree to vector (get values from the whole tree a put them into a vector)
+vector<int> TreeToVector(Node* node, vector<int> serializedTree) {
+
+	serializedTree.push_back(node->value);
+
+	if (node->left)
+		TreeToVector(node->left, serializedTree);
+	if (node->right)
+		TreeToVector(node->right, serializedTree);
+
+	return serializedTree;
+}
+
+// Generate a sorted binary tree
 Node* SortBinaryTree(Node* root) {
+	// Serialize the existing tree
+
+	// Extract node values
+
+	// Go through all values starting from the first (a new root) and put all smaller values on the left and bigger on the right (the left-most node is the smallest one)
+
+	// Return a pointer to the root node
 	return NULL;
 }
