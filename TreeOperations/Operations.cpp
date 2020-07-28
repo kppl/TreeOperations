@@ -75,7 +75,7 @@ int UniversalValueTree(Node* startNode, int initValue) {
 }
 
 // Tree to vector (get values from the whole tree a put them into a vector)
-vector<int> TreeToVector(Node* node, vector<int> serializedTree) {
+vector<int> TreeToVector(Node* node, vector<int>& serializedTree) {
 
 	serializedTree.push_back(node->value);
 
@@ -87,14 +87,39 @@ vector<int> TreeToVector(Node* node, vector<int> serializedTree) {
 	return serializedTree;
 }
 
+void AddSortedNode(Node* node, int value, bool isRoot) {
+	if (isRoot) {
+		node = new Node(value);
+	}
+	else if (value < node->value) {
+		// go to the left
+		if (node->left == NULL) 
+			node->left = new Node(value);
+		else
+			AddSortedNode(node->left, value, false);
+	}
+	else
+	{
+		// go to the right
+		if (node->right == NULL)
+			node->right = new Node(value);
+		else
+			AddSortedNode(node->right, value, false);
+	}
+}
+
 // Generate a sorted binary tree
-Node* SortBinaryTree(Node* root) {
-	// Serialize the existing tree
-
-	// Extract node values
-
+Node* SortBinaryTree(Node* InputRoot) {
+	// Serialize the existing tree extraction nodes' values
+	vector<int> serializedTree;
+	serializedTree = TreeToVector(InputRoot, serializedTree);
 	// Go through all values starting from the first (a new root) and put all smaller values on the left and bigger on the right (the left-most node is the smallest one)
-
+	Node *root = NULL;
+	bool isRoot = true;
+	for (auto value : serializedTree) {
+		AddSortedNode(root, value, isRoot);
+		isRoot = false;
+	}
 	// Return a pointer to the root node
-	return NULL;
+	return root;
 }

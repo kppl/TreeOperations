@@ -26,6 +26,9 @@ int main()
 	PrintTreeFactory(root, 5);
 	std::cout << "Nodes' sum: " << CountNodeValues(&root, 0) << "\n";
 	std::cout << "Universal Value Trees: " << UniversalValueTree(&root, 0) << "\n";
+	std::cout << "Print the sorted tree: \n\r";
+	Node* sortedTree = SortBinaryTree(&root);
+	PrintTreeFactory(*sortedTree, 5);
 
 }
 
