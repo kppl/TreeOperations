@@ -15,7 +15,7 @@ int main()
 	Node A = Node(2);
 	Node C = Node(4);
 	Node F = Node(7);
-	Node G = Node(7);
+	Node G = Node(-1);
 	Node E = Node(7, &F, &G);
 	Node D = Node(7, NULL, &E);
 	Node B = Node(3, &C, &D);
@@ -28,7 +28,7 @@ int main()
 	std::cout << "Universal Value Trees: " << UniversalValueTree(&root, 0) << "\n";
 	std::cout << "Print the sorted tree: \n\r";
 	Node* sortedTree = SortBinaryTree(&root);
-	PrintTreeFactory(*sortedTree, 5);
+	PrintTreeFactory(*sortedTree, 9);
 
 }
 

@@ -89,7 +89,7 @@ vector<int> TreeToVector(Node* node, vector<int>& serializedTree) {
 
 void AddSortedNode(Node* node, int value, bool isRoot) {
 	if (isRoot) {
-		node = new Node(value);
+		node->value = value;
 	}
 	else if (value < node->value) {
 		// go to the left
@@ -114,7 +114,7 @@ Node* SortBinaryTree(Node* InputRoot) {
 	vector<int> serializedTree;
 	serializedTree = TreeToVector(InputRoot, serializedTree);
 	// Go through all values starting from the first (a new root) and put all smaller values on the left and bigger on the right (the left-most node is the smallest one)
-	Node *root = NULL;
+	Node *root = new Node(-9999);
 	bool isRoot = true;
 	for (auto value : serializedTree) {
 		AddSortedNode(root, value, isRoot);
