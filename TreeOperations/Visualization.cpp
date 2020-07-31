@@ -8,6 +8,7 @@
 #include<iterator>
 #include <algorithm>
 #include <cmath>
+#include "Operations.h"
 
 using namespace std;
 
@@ -113,7 +114,8 @@ void PrintTree(vector<string> serializedTree, int treeDepth) {
 
 }
 
-void PrintTreeFactory(Node& root, int treeDepth, int mode = 0) {
+void PrintTreeFactory(Node& root, int mode = 0) {
+	int treeDepth = CountTreeDepth(&root);
 	string serializedTree = "l,";
 	SerializeBinaryTree(&root, 0, 0, serializedTree);
 	vector<string> splittedString = SplitStringToVector(serializedTree, ';');

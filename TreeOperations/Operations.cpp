@@ -123,3 +123,19 @@ Node* SortBinaryTree(Node* InputRoot) {
 	// Return a pointer to the root node
 	return root;
 }
+
+int CountTreeDepth(Node* node, int depth) {
+	depth++;
+
+	if (node->left) {
+		if(depth < CountTreeDepth(node->left, depth))
+			depth = CountTreeDepth(node->left, depth);
+	}
+
+	if (node->right) {
+		if (depth < CountTreeDepth(node->right, depth))
+			depth = CountTreeDepth(node->right, depth);
+	}
+
+	return depth;
+}
