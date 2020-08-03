@@ -1,18 +1,15 @@
-#include <iostream>
-#include <list>
-#include<string>
-#include "Node.h"
-#include "Operations.h"
-#include <vector>
-#include <sstream>
-#include<iterator>
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <sstream>
+#include <string>
+#include <vector>
+#include "Node.h"
 #include "Operations.h"
 
 using namespace std;
-
-
 
 
 // The function SplitStringToVector was written using an example on the following page: http://www.cplusplus.com/articles/2wA0RXSz/
@@ -32,6 +29,7 @@ vector<string> SplitStringToVector(const string& inputString, const char& delimi
 	return result;
 }
 
+// Print the binary tree structure in the console window
 /****                    SAMPLE IMAGE OUTPUT                       ****/
 //								  1
 //                              2   3
@@ -75,6 +73,17 @@ void SimplePrintTree(vector<string> serializedTree, int treeDepth) {
 
 }
 
+// Print the binary tree structure in the console window
+/****                    SAMPLE IMAGE OUTPUT                       ****/
+//	 1
+//	/ \
+//  2 3
+//   / \
+//   4 7
+//      \
+//       7
+//      / \
+//      7 - 1
 void PrintTree(vector<string> serializedTree, int treeDepth) {
 
 	// Put the input vector to a 2 dimensional array
@@ -114,6 +123,13 @@ void PrintTree(vector<string> serializedTree, int treeDepth) {
 
 }
 
+
+// Implementation agnostic print tree factory.
+// Printes a binary tree in a console window hiding the algorithms and code complexity.
+// The way, how a tree should be displayed can be changed by changing the mode. 
+// MODES:
+// 0 - standard algorithm
+// 1 - simplified algorithm
 void PrintTreeFactory(Node& root, int mode = 0) {
 	int treeDepth = CountTreeDepth(&root);
 	string serializedTree = "l,";
