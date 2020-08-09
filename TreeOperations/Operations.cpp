@@ -22,6 +22,7 @@ void SerializeBinaryTree(Node* nodeToPlot, int posHorizontal, int posVertical, s
 	}
 }
 
+// Function that sums up values from all nodes.
 int CountNodeValues(Node* startNode, int initValue)
 {
 	int result = initValue + startNode->value;
@@ -34,6 +35,8 @@ int CountNodeValues(Node* startNode, int initValue)
 	return result;
 }
 
+// Get number of universal value (unival) subtrees in a binary tree.
+// A unival tree is a tree where all nodes have the same value.
 int UniversalValueTree(Node* startNode, int initValue) {
 	int result = initValue;
 
@@ -87,6 +90,7 @@ vector<int> TreeToVector(Node* node, vector<int>& serializedTree) {
 	return serializedTree;
 }
 
+// Add a node to a sorted tree
 void AddSortedNode(Node* node, int value, bool isRoot) {
 	if (isRoot) {
 		node->value = value;
@@ -124,6 +128,7 @@ Node* SortBinaryTree(Node* InputRoot) {
 	return root;
 }
 
+// Count a depth of a given tree
 int CountTreeDepth(Node* node, int depth) {
 	depth++;
 
