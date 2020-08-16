@@ -7,6 +7,12 @@ class Node
 		Node* left, *right;
 		bool IsUnival = false;
 
+		Node() {
+			value = -9999;
+			left = nullptr;
+			right = nullptr;
+		}
+
 		Node(int val) {
 			value = val;
 		}
@@ -16,5 +22,6 @@ class Node
 			left = l;
 			right = r;
 		}
+
 };
 
